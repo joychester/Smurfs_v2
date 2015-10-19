@@ -6,12 +6,28 @@ Smurfs using Nightmare_v2 which is Atom/Electron
 2. nightmare v2 use atom/electron to improve the speed and footprint with the same APIs: [V2 Proposal](https://github.com/segmentio/nightmare)  
 
 ##Precondition:  
-npm install --save nightmare  
-npm install --save vo  
+> * install node on your test machine  
+> * npm install --save nightmare  
+> * npm install --save vo  
+> * install ruby, add them to PATH
+> * gem install concurrent-ruby
+> * gem install concurrent-ruby-edge
+> * gem install concurrent-ruby-ext (optional, for perf improvement on MRI)
+> * gem install rufus-scheduler (optional)
+> * gem install poseidon (optional, for kafka client)
+> * gem install sinatra (optional, create web server to forward kafka messages)  
 
 ##How to use:  
-ruby smurfs.rb -u 3 -l 10 -d 20 -g homepage -f ./test_script/pagetest.js  
-node --harmony test_script/pagetest.js  
+> * ruby smurfs.rb -u 3 -l 10 -d 20 -g homepage -f ./test_script/pagetest.js  
+Notice:
+> First option [-u 3]: 3 Concurrent users  
+> Second option [-l 10 optional]: Execute 10 loops by each user  
+> Third option [-d 20 optional]: Test duration timed out value
+> Fouth option [-g group optional]: Test Group Name 
+> Fifth option [-f ./xxx/x.js]: Test script you want to exec  
+
+or you can test your test script using command line:  
+> * node --harmony test_script/pagetest.js  
 
 ##If you still want to use Phantomjs to test your single pages:  
 Checkout my Smurfs_v1, it uses native phantomjs scripts to load tests your website: [Smurfs V1 Project](https://github.com/joychester/Smurfs)    
