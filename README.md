@@ -9,7 +9,7 @@ Smurfs using Nightmare_v2 which is Atom/Electron
 > * install node on your test machine  
 > * npm install --save nightmare  
 > * npm install --save vo  
-> * install ruby, add them to PATH
+> * install ruby(v2.2.3 from my side tested), add them to PATH
 > * gem install concurrent-ruby
 > * gem install concurrent-ruby-edge
 > * gem install concurrent-ruby-ext (optional, for perf improvement on MRI)
