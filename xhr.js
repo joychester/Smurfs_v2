@@ -1,6 +1,5 @@
 function send_message(tp,tag){
-	   var starttime = window.performance.timing.navigationStart;
-       var loadtiming =  Date.now()-starttime;
+			 var loadtiming = window.performance.now();
        //make ajax call to kafka server to save the timing
        var xhr = new XMLHttpRequest();
        xhr.open( "post", "http://localhost:8887/postkf", false);
