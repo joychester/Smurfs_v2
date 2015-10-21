@@ -1,5 +1,5 @@
 # Smurfs_v2
-Smurfs using Nightmare_v2 which is Atom/Electron  
+Smurfs v2 using Nightmare_v2 API(Atom/Electron) to load test your webpages
 
 ##Why use Atom/Electron instead of Phantomjs:  
 1. nightmare v1 wrappers phantomjs to make user friendly API to make synchronous instead of using callbacks  
@@ -17,14 +17,14 @@ Smurfs using Nightmare_v2 which is Atom/Electron
 > * gem install poseidon (optional, for kafka client)
 > * gem install sinatra (optional, create web server to forward kafka messages)  
 
-##How to use:  
+##How to use (Tested on Mac OS X 10.10):  
 > * ruby smurfs.rb -u 3 -l 10 -d 20 -g homepage -f ./test_script/pagetest.js  
 
 ####Notice:  
 > * First option [-u 3]: 3 Concurrent users  
 > * Second option [-l 10 optional]: Execute 10 loops by each user  
 > * Third option [-d 20 optional]: Test duration timed out value
-> * Fouth option [-g group optional]: Test Group Name 
+> * Fouth option [-g group optional]: Test Group Name
 > * Fifth option [-f ./xxx/x.js]: Test script you want to exec  
 
 or you can test your script by using node cmd:  
