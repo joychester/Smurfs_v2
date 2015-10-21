@@ -19,7 +19,8 @@ Smurfs using Nightmare_v2 which is Atom/Electron
 
 ##How to use:  
 > * ruby smurfs.rb -u 3 -l 10 -d 20 -g homepage -f ./test_script/pagetest.js  
-###Notice:  
+
+####Notice:  
 > * First option [-u 3]: 3 Concurrent users  
 > * Second option [-l 10 optional]: Execute 10 loops by each user  
 > * Third option [-d 20 optional]: Test duration timed out value
