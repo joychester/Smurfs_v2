@@ -15,10 +15,10 @@ function *run() {
   var nightmare = Nightmare({'port': freeport, 'timeout': 15000, 'interval': 200});
   yield nightmare
     //load landing page
-      .goto(test_url)
-	  .inject("js","xhr.js")
+    .goto(test_url)
     .wait('.event-title')
     .screenshot("shot1.png")
+    .inject("js","xhr.js")
     .evaluate(function(tp){
        //make ajax call to kafka server to save the timing
        var tag = 'artist_page';
@@ -31,8 +31,8 @@ function *run() {
     .screenshot("shot2.png")
     .inject("js","xhr.js")
     .evaluate(function(tp){
-       var tag = 'event_page';   
-       this.send_message(tp,tag);   
+       var tag = 'event_page';
+       this.send_message(tp,tag);
     }, tp)
     .end();
 }
