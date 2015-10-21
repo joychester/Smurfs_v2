@@ -16,17 +16,12 @@ function *run() {
   yield nightmare
     //load landing page
     .goto(test_url)
-	  // .inject("js","xhr.js")
+	  .inject("js","xhr.js")
     .wait('.event-title')
     .evaluate(function(tp){
-       var tag = 'artist_page';
-       var starttime = window.performance.timing.navigationStart;
-		   var loadtiming =  Date.now()-starttime;
        //make ajax call to kafka server to save the timing
-	     var xhr = new XMLHttpRequest();
-	     xhr.open( "post", "http://localhost:8887/postkf", false);
-		   xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-	     xhr.send('client_id='+tag+'&topic='+tp+'&msg='+loadtiming);
+       var tag = 'artist_page';
+       this.send_message(tp,tag);
 	     }, tp)
 
     //load event page
@@ -34,13 +29,7 @@ function *run() {
     .wait('#sell-tickets')
     .evaluate(function(tp){
        var tag = 'event_page';
-       var starttime = window.performance.timing.navigationStart;
-       var loadtiming =  Date.now()-starttime;
-       //make ajax call to kafka server to save the timing
-       var xhr = new XMLHttpRequest();
-       xhr.open( "post", "http://localhost:8887/postkf", false);
-       xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-       xhr.send('client_id='+tag+'&topic='+tp+'&msg='+loadtiming);
+       this.send_message(tp,tag);
     }, tp)
     .end();
 }
