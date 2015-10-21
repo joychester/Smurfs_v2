@@ -19,14 +19,14 @@ Smurfs using Nightmare_v2 which is Atom/Electron
 
 ##How to use:  
 > * ruby smurfs.rb -u 3 -l 10 -d 20 -g homepage -f ./test_script/pagetest.js  
-Notice:
-> First option [-u 3]: 3 Concurrent users  
-> Second option [-l 10 optional]: Execute 10 loops by each user  
-> Third option [-d 20 optional]: Test duration timed out value
-> Fouth option [-g group optional]: Test Group Name 
-> Fifth option [-f ./xxx/x.js]: Test script you want to exec  
+###Notice:  
+> * First option [-u 3]: 3 Concurrent users  
+> * Second option [-l 10 optional]: Execute 10 loops by each user  
+> * Third option [-d 20 optional]: Test duration timed out value
+> * Fouth option [-g group optional]: Test Group Name 
+> * Fifth option [-f ./xxx/x.js]: Test script you want to exec  
 
-or you can test your test script using command line:  
+or you can test your script by using node cmd:  
 > * node --harmony test_script/pagetest.js  
 
 ##If you still want to use Phantomjs to test your single pages:  
