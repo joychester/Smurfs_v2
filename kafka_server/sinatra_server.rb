@@ -3,11 +3,11 @@ require './producer'
 
 configure do
 	set :bind, '0.0.0.0'
-	set :port, '8887'
+	set :port, '9292'
 end
 
 #var postBody = "client_id=aaa&topic=test&msg=#{load_timing}";
-post '/postkf' do
+post '/rest/postkf' do
 	@client_id = params[:client_id]
 	@topic = params[:topic]
 	@messages = params[:msg]
