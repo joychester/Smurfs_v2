@@ -8,7 +8,8 @@ const RENDER_TIME_MS = 200;
 var freeport = process.argv[2];
 
 vo(run)(function(err, result) {
-  //if (err) throw err;
+  //throw errors and stop the tests
+  if (err) throw err;
 });
 
 function *run() {
