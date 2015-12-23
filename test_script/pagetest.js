@@ -13,7 +13,7 @@ vo(run)(function(err, result) {
 
 function *run() {
 
-  var nightmare = Nightmare({'port': freeport, 'timeout': 15000, 'interval': 200});
+  var nightmare = Nightmare({'port': freeport, 'waitTimeout': 15000, 'interval': 200});
   yield nightmare
     //load landing page
     .goto(test_url)
