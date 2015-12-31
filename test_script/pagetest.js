@@ -5,8 +5,6 @@ var vo = require('vo');
 var test_url = "http://www.slce002.com/performer/136034/", tp = 'test2';
 const RENDER_TIME_MS = 200;
 
-var freeport = process.argv[2];
-
 vo(run)(function(err, result) {
   //throw errors and stop the tests
   if (err) throw err;
@@ -14,7 +12,7 @@ vo(run)(function(err, result) {
 
 function *run() {
 
-  var nightmare = Nightmare({'port': freeport, 'waitTimeout': 15000, 'interval': 200});
+  var nightmare = Nightmare({'waitTimeout': 15000});
   yield nightmare
     //load landing page
     .goto(test_url)
