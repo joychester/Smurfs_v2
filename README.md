@@ -1,5 +1,5 @@
 # Smurfs_v2
-Smurfs v2 using Nightmare_v2 API(Atom/Electron) to load test your webpages
+Smurfs v2 using [Nightmare_v2 API](https://github.com/segmentio/nightmare) to load test your webpages
 
 ##Why use Atom/Electron instead of Phantomjs:  
 1. nightmare v1 wrappers phantomjs to make user friendly API to make synchronous instead of using callbacks  
