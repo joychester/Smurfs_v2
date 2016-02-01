@@ -3,6 +3,7 @@ var vo = require('vo');
 
 //tp is used for collect data by kafka, you can ignore it
 var test_url = "https://www.etsy.com/", tp = 'test2';
+var test_tag = "homepage";
 //const RENDER_TIME_MS = 1000;
 
 vo(run)(function(err, result) {
@@ -11,7 +12,9 @@ vo(run)(function(err, result) {
 
 function *run() {
   var user_timing = 0; 
-  var nightmare = Nightmare({'waitTimeout': 15000, show: true});
+  //set {show: true} option is for debugging purpose, disable it when load test
+  //var nightmare = Nightmare({'waitTimeout': 15000, show: true});
+  var nightmare = Nightmare({'waitTimeout': 15000});
 
   var user_time = yield nightmare
     //load landing page
@@ -43,6 +46,6 @@ function *run() {
         return "No such mark..."
     });
 
-    console.log(user_time);
+    console.log(test_tag + ":" + user_time);
     yield nightmare.end();
 }
