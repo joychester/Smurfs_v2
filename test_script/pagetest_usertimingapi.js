@@ -11,7 +11,6 @@ vo(run)(function(err, result) {
 });
 
 function *run() {
-  var user_timing = 0; 
   //set {show: true} option is for debugging purpose, disable it when load test
   var nightmare = Nightmare({'waitTimeout': 15000, show: false});
 
