@@ -11,10 +11,12 @@ vo(run)(function(err, result) {
 });
 
 function *run() {
+  var randSleep = Math.floor((Math.random() * 500) + 500);
   //set {show: true} option is for debugging purpose, disable it when load test
   var nightmare = Nightmare({'waitTimeout': 15000, show: false});
 
   var user_time = yield nightmare
+    .useragent("nightmare;Electron")
     //load landing page
     .goto(test_url)
     //.wait('.event-title')
@@ -45,5 +47,17 @@ function *run() {
     });
 
     console.log(test_tag + ":" + user_time);
-    yield nightmare.end();
+    //Reminder:this part needs you to setup influxdb and Chronograf
+    yield nightmare
+      .goto("http://127.0.0.1:10000/visualizations")
+      .evaluate(function(tag, ut){
+        //make ajax call to influxdb to save user timing
+        var xhr = new XMLHttpRequest();
+        xhr.open( "post", "http://127.0.0.1:8086/write?db=mydb", false);
+        //xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        //sample data: "PROD_homepage user_time=1293"
+        xhr.send(tag + " user_time=" + ut);
+      }, test_tag, user_time)
+      .wait(randSleep)
+      .end();
 }
