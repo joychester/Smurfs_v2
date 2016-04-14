@@ -4,7 +4,7 @@ var vo = require('vo');
 //tp is used for collect data by kafka, you can ignore it
 var test_url = "https://www.etsy.com/", tp = 'test2';
 var test_tag = "homepage";
-//const RENDER_TIME_MS = 1000;
+const RENDER_TIME_MS = 1000;
 
 vo(run)(function(err, result) {
   if (err) throw err;
@@ -13,14 +13,14 @@ vo(run)(function(err, result) {
 function *run() {
   var randSleep = Math.floor((Math.random() * 500) + 500);
   //set {show: true} option is for debugging purpose, disable it when load test
-  var nightmare = Nightmare({'waitTimeout': 15000, show: false});
+  var nightmare = Nightmare({waitTimeout: 15000, openDevTools: false, show: true});
 
   var user_time = yield nightmare
     .useragent("nightmare;Electron")
     //load landing page
     .goto(test_url)
     //.wait('.event-title')
-    //.wait(RENDER_TIME_MS)
+    .wait(RENDER_TIME_MS)
     .wait(function(){
       var marks = window.performance.getEntriesByType("mark");
       if (marks.length > 0) {
