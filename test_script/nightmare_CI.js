@@ -57,12 +57,17 @@ function *run() {
 
     console.log(tag + ":" + user_timings["user_time"]);
     yield nightmare
-      .goto("http://localhost:9292/login")
+      .goto("http://localhost:9292/rest/beacon")
       .evaluate(function(env, date, url, tag, ut){
-        //make ajax call to influxdb to save user timing
-        var xhr = new XMLHttpRequest();
-        xhr.open( "get", `http://localhost:9292/perftiming?env_name=${env}&date=${date}&url=${url}&tag=${tag}&user_timing=${ut}`, true);
-        xhr.send();
+        //send beacon to save user timing
+        if (window.navigator.sendBeacon) {
+          var data = `{"env_name": "${env}", "date": "${date}", "url": "${url}", "tag": "${tag}", "user_timing": "${ut}"}`
+          window.navigator.sendBeacon('/rest/perftiming', data);
+        } else {
+          var xhr = new XMLHttpRequest();
+          xhr.open( "get", `http://localhost:9292/rest/perftiming?env_name=${env}&date=${date}&url=${url}&tag=${tag}&user_timing=${ut}`, true);
+          xhr.send();
+        }
       }, env_name, date, url, tag, user_timings["user_time"])
       .wait(1000)
       .end();
